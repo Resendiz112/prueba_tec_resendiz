@@ -1,0 +1,154 @@
+<header class="nav">
+  <div>
+      <button class="btn-header btn1">LOG IN   <span>></span> </button>
+      <button class="btn-header btn2">LINK YOUR CARD          ></button>
+  </div>
+</header>
+
+<div class="content">
+  <div class="title">
+    <h1 class="text-title">Link your <span class="text_blank">business </span>  card <br>  to <span class="emphasis">unlock cashback</span> offers</h1>
+  </div>
+  <div class="compare">
+    <table class="table-comp">
+      <thead>
+        <tr>
+          <th></th>
+          <th>No card linking required</th>
+          <th>Link your card to get</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Instant Coupons</td>
+          <td class="cell-img"><img src="/images/flechita.png" alt="Flechita" class="flechita"></td>
+          <td class="cell-img"><img src="/images/flechita.png" alt="Flechita" class="flechita"></td>
+        </tr>
+        <tr>
+          <td>Full access to Visa Savings Edge benefits</td>
+          <td></td>
+          <td class="cell-img"><img src="/images/flechita.png" alt="Flechita" class="flechita"></td>
+        </tr>
+        <tr>
+          <td>Cashback trading</td>
+          <td></td>
+          <td class="cell-img"><img src="/images/flechita.png" alt="Flechita" class="flechita"></td>
+        </tr>
+        <tr>
+          <td>Merchant location search</td>
+          <td></td>
+          <td class="cell-img"><img src="/images/flechita.png" alt="Flechita" class="flechita"></td>
+        </tr>
+        <tr>
+          <td>Cashback offers</td>
+          <td></td>
+          <td class="cell-img"><img src="/images/flechita.png" alt="Flechita" class="flechita"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn-link">LINK YOUR CARD ></button>
+  </div>
+  <div class="content_categories">
+    <div class="title_categories">
+    <h1 class="title_categorie">Explore Instant Coupons</h1>
+    </div>
+    <div class="categories">
+
+
+      @for (cat of categorias; track cat){
+        <button class="btn-category" [class.active]="categoriaActiva === cat" (click)="CategoriaSeleccionada(cat)">{{cat}}</button>
+      }
+    </div>
+
+  </div>
+  <div class="instant-coupon">
+    <div class="tools">
+      <h2 class="title_tools">Featured Instant Coupons ({{listaMarcasAll.length}})</h2>
+      <div class="div-btn">
+        <button class="btn_view_ic" [class.active]= "vistaActual==='lista'"  (click)="cambiarVista('lista')"><img src="/images/lista.svg" alt="" class="img_view_ic"></button>
+        <button class="btn_view_ic" [class.active]= "vistaActual==='grid'" (click)="cambiarVista('grid')"><img src="/images/cuadricula.svg" alt=""  class="img_view_ic" ></button>
+        <select name="" id="" class="btn_sort" (change)="ordenarCupones($event)">
+          <option value="" selected>SORT BY  &nbsp;&nbsp;|</option>
+          <option value="asc"> NAME A-Z</option>
+          <option value="desc">NAME Z-A</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="cards" [class.vista-lista]="vistaActual === 'lista'">
+
+    @for(marca of listaMarcas; track marca) {
+    <div class="card" >
+      <div class="card_logo">
+        <img [src]="marca.logo" alt="">
+      </div>
+      <div class="coupon_type">
+        <p class="p_coupon_type"><img src="/images/offer.svg" alt="" class="svg_offer">Instant Coupon</p>
+      </div>
+      <div class="company">
+        <p class="name_company">{{marca.nombre}}</p>
+        <p class="promotion">{{marca.promo}}</p>
+        <button class="btn_get_coupon">Get Coupon  <img src="/images/arrow.svg" alt="" class="arrow_get"></button>
+      </div>
+    </div>
+  }
+
+
+  </div>
+   @if (listaMarcas.length < listaMarcasAll.length) {
+    <div class="more_coupon">
+      <button class="btn_more_coupon" (click)="masCupones()">MORE INSTANT COUPONS <span class="emphasis">&nbsp;&nbsp;></span></button>
+
+    </div>
+  }
+  <div class="unlock">
+    <div class="u_title">
+      <h2 class="u_title_p">Unlock the full power of</h2>
+    </div>
+    <div class="cards2">
+      @for (marca of listaMarcasCashback; track marca) {
+      <div class="card2">
+        <div class="card2_img">
+          <img [src]="marca.imagen" alt="logo" >
+        </div>
+        <div  class="card2_logo">
+          <img [src]="marca.logo" alt="">
+        </div>
+        <div class="coupon_type2">
+          <p><img src="/images/cashback.svg" alt="">Cashback</p>
+        </div>
+        <div class="card2_info">
+          <div>
+            <p>{{marca.nombre}}</p>
+          </div>
+          <div class="card2_promo">
+            <p>{{marca.promo}}</p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="link_card">
+          <button class="btn-link">LINK YOUR CARD ></button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="links">
+      <a href="" class="a_footer" >Contact Support</a>
+      <a href="" class="a_footer">Terms and Conditions</a>
+      <a href="" class="a_footer">Privacy Policy</a>
+      <a href="" class="a_footer">Cookie Policy</a>
+    </div>
+
+    <div class="language">
+      <img src="/images/lang.svg" alt="" class="img_lang">
+      <select name="" id="" class="btn_lang">
+        <option value="">English</option>
+        <option value="">Español</option>
+      </select>
+    </div>
+  </footer>
+</div>
+
